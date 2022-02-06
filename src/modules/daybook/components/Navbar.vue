@@ -1,7 +1,7 @@
 <template>
   <nav class="nav">
-    <router-link class="nav__link" to="/">
-      <i class="far fa-address-book" /> Journal
+    <router-link class="nav__link" to="/daybook"
+      ><i class="far fa-address-book" /> Journal
     </router-link>
 
     <button class="nav__button" @click="onLogout">
@@ -34,6 +34,7 @@ export default {
 <style lang="scss" scoped>
 .nav {
   background-color: #252525;
+  border-bottom: 2px solid #979797;
   color: white;
   display: flex;
   justify-content: space-between;

@@ -2,12 +2,15 @@
   <div class="input-container">
     <input type="text" v-model="term" placeholder="Search" />
   </div>
+
   <button
+    class="add-entry-button"
     @click="$router.push({ name: 'entry-details', params: { entryId: 'new' } })"
   >
     <div class="fa fa-plus"></div>
     Add Entry
   </button>
+
   <div class="entries-container">
     <Entry v-for="entry in entriesByTerm" :key="entry.id" :entry="entry" />
   </div>
@@ -40,12 +43,37 @@ export default {
 
 <style lang="scss" scoped>
 .input-container {
-  padding: 1rem 0.5rem;
+  padding: 1rem 0;
   input {
     border: none;
     border-radius: 5px;
     padding: 0.8rem 1rem;
-    width: 90%;
+    width: 85%;
+  }
+}
+
+.add-entry-button {
+  background-color: #252525;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: .8rem 0.5rem;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto;
+  width: 85%;
+  &:hover {
+    background-color: #353535;
+  }
+  &:active {
+    background-color: #151515;
   }
 }
 

@@ -1,12 +1,21 @@
 <template>
-  <h1 v-if="authStatus === 'authenticating'">{{ authStatus }}</h1>
+  <template v-if="authStatus === 'authenticating'">
+    <LoadingSpinner />
+  </template>
   <router-view v-else />
 </template>
 
 <script>
 import useAuth from "@/modules/auth/composables/useAuth";
+import { defineAsyncComponent } from "vue";
+
 export default {
   name: "App",
+  components: {
+    LoadingSpinner: defineAsyncComponent(() =>
+      import("@/components/LoadingSpinner")
+    ),
+  },
   setup() {
     const { authStatus, checkAuthStatus } = useAuth();
     checkAuthStatus();
@@ -31,6 +40,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  overflow-x: hidden;
 }
 
 #nav {

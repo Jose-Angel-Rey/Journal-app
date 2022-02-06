@@ -11,7 +11,7 @@
     </div>
   </section>
   <div v-else>
-    <h2>Loading entries...</h2>
+    <LoadingSpinner />
   </div>
 </template>
 
@@ -24,6 +24,9 @@ export default {
   components: {
     Navbar: defineAsyncComponent(() => import("../components/Navbar")),
     EntryList: defineAsyncComponent(() => import("../components/EntryList")),
+    LoadingSpinner: defineAsyncComponent(() =>
+      import("@/components/LoadingSpinner")
+    ),
   },
   computed: mapState({
     isLoading: (state) => state.journal.isLoading,
@@ -51,5 +54,9 @@ section {
   background-color: #ccc;
   width: 30%;
   border-right: 2px solid #ddd;
+
+  @media screen and (max-width: 700px) {
+    width: 50%;
+  }
 }
 </style>

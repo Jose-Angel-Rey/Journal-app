@@ -1,12 +1,14 @@
 <template>
   <section
     class="entry"
-    @click="$router.push({ name: 'entry-details', params: { entryId: entry.id } })"
+    @click="
+      $router.push({ name: 'entry-details', params: { entryId: entry.id } })
+    "
   >
     <header class="entry-header">
-      <h2 class="entry-date__date">{{ yearDay }} </h2>
-      <span class="entry-date__day">{{ month }} </span>
-      <span class="entry-date__day">{{ day }} </span>
+      <h2 class="entry-date__date">{{ yearDay }}</h2>
+      <span class="entry-date__span">{{ month }} </span>
+      <span class="entry-date__span">{{ day }} </span>
     </header>
 
     <div class="entry-content">
@@ -78,7 +80,7 @@ export default {
   cursor: pointer;
   padding: 2rem 1rem;
   transition: all 0.5s;
-
+  text-align: center;
   &:hover {
     background-color: #fff;
   }
@@ -87,6 +89,11 @@ export default {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
+
+  &__span{
+    display: inline-block;
+    margin: .5rem .2rem;
+  }
 }
 .entry-header {
   &__title {

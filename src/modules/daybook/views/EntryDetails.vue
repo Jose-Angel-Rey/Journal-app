@@ -3,9 +3,8 @@
     <section class="entry">
       <header class="entry-header">
         <div class="entry-date">
-          <span class="entry-date__date">{{ yearDay }} </span>
-          <span class="entry-date__day"> {{ month }} </span>
-          <span class="entry-date__day"> {{ day }} </span>
+          <span class="entry-date__span"> {{ month }} </span>
+          <span class="entry-date__span"> {{ day }} </span>
         </div>
         <div class="buttons">
           <input
@@ -35,7 +34,7 @@
         <textarea
           class="entry-content__text"
           placeholder="what's new?"
-          rows="15"
+          spellcheck="false"
           v-model="entry.description"
         ></textarea>
       </div>
@@ -205,28 +204,58 @@ export default {
 .entry {
   &__image {
     box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
-    width: 12rem;
-    height: 7rem;
+    max-width: 12rem;
+    height: 6rem;
     position: fixed;
-    bottom: 8rem;
-    right: 2rem;
+    bottom: 1rem;
+    right: 6rem;
     object-fit: cover;
     object-position: center;
     padding: 0.2rem;
+    width: 30vw;
+
+    @media screen and (min-width: 768px) {
+      right: 25%;
+      bottom: 2rem;
+    }
   }
 }
 .entry-header {
   border-bottom: 1px solid #505050;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   padding: 1rem 2rem;
   width: 100%;
+
+  @media screen and (min-width: 760px) {
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+  }
+}
+.entry-date {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.3rem;
 }
 .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+
   &__btn {
-    border: 1px solid #505050;
+    border: none;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
-    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
     margin: 0 0.5rem;
     background-color: #fff;
     color: #fff;
@@ -253,11 +282,12 @@ export default {
   textarea {
     background: transparent;
     border: none;
+    border-bottom: 1px solid #ccc;
     font-size: 1.1rem;
-    padding: 1rem;
+    padding: 2rem 1rem;
     outline: none;
     width: 100%;
-    height: 100%;
+    height: 50vh;
   }
 }
 </style>
