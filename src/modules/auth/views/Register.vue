@@ -1,5 +1,6 @@
 <template>
   <section class="form-container">
+    <Logo />
     <h1 class="form__title">Register</h1>
     <form class="form" @submit.prevent="onSubmit">
       <input
@@ -33,13 +34,18 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, defineAsyncComponent } from "vue";
 import useAuth from "../composables/useAuth";
 import Swal from "sweetalert2";
 import { useRouter } from "vue-router";
 
 export default {
   name: "Register",
+  components: {
+    Logo: defineAsyncComponent(() =>
+      import(/* webpackChunkName: "Logo" */ "../components/Logo.vue")
+    ),
+  },
   setup() {
     const router = useRouter();
 
@@ -76,16 +82,21 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
   &-container {
+    border: 1px solid #ccc;
+    width: 90%;
+    max-width: 30rem;
     background-color: #fff;
-    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    padding: 2rem;
     position: relative;
     z-index: 5;
   }
   &__title {
     font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
+    font-weight: 400;
+    margin: 2rem auto;
   }
   &__input {
     border: 1px solid #8b8b8b;
@@ -94,21 +105,32 @@ export default {
     width: 100%;
   }
   &__button {
-    background-color: #8b8b8b;
+    background-color: #0a5dc9;
     border: none;
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
     font-size: 1.2rem;
     padding: 0.8rem;
+    transition: all 0.4s;
     width: 100%;
+
+    &:hover {
+      background-color: lighten($color: #0a5dc9, $amount: 10);
+    }
+    &:active {
+      background-color: #0a5dc9;
+    }
   }
   &__link {
     color: #8b8b8b;
     font-size: 1.2rem;
-    font-weight: bold;
-    margin: 1rem auto;
+    margin: 3rem auto 1rem;
     text-align: center;
+
+    a {
+      color: #0a5dc9;
+    }
   }
 }
 </style>

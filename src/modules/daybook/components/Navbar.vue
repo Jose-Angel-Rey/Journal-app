@@ -1,7 +1,7 @@
 <template>
   <nav class="nav">
     <router-link class="nav__link" to="/">
-      <i class="far fa-address-book" /> Daybook
+      <i class="far fa-address-book" /> Journal
     </router-link>
 
     <button class="nav__button" @click="onLogout">

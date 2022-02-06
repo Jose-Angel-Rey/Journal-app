@@ -3,8 +3,7 @@ import store from "@/store";
 const isAuthenticatedGuard = async (to, from, next) => {
   const { ok } = await store.dispatch("auth/checkAuth");
 
-  if (ok) next();
-  else next("/login");
+  ok ? next() : next("/auth");
 };
 
 export default isAuthenticatedGuard;
